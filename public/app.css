@@ -1,0 +1,10 @@
+body{
+    max-width: 55vw;
+    margin:0 auto;
+}
+p{
+    line-height: 1.5;
+}
+article + article{
+    margin-top: 3rem;
+}
