@@ -20,14 +20,19 @@
         </style>
     </head>
     <body class="antialiased">
+
        <h1>Initial Text Regonition</h1>
+
+       <?php foreach($posts as $post):?>
+
        <article>
-        <a href="/posts/my-first-post"><h1>my first post</h1></a>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis esse odio molestias adipisci doloribus expedita architecto odit nostrum reprehenderit? Voluptatum id voluptas amet totam, vero earum fugiat. Explicabo, cupiditate quasi.</p>
+       <a href="<?= $post->slug;?>">
+        <h1><?= $post->title; ?></h1></a>
+        <div>
+        <?= $post->body; ?>
+        </div>
        </article>
-       <article>
-        <a href="/posts/my-second-post"><h1>my second post</h1></a>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis esse odio molestias adipisci doloribus expedita architecto odit nostrum reprehenderit? Voluptatum id voluptas amet totam, vero earum fugiat. Explicabo, cupiditate quasi.</p>
-       </article>
+       <?php endforeach;?>
+
     </body>
 </html>
