@@ -26,7 +26,7 @@
        <?php foreach($posts as $post):?>
 
        <article>
-       <a href="<?= $post->slug;?>">
+       <a href="/posts/<?= $post->slug;?>">
         <h1><?= $post->title; ?></h1></a>
         <div>
         <?= $post->body; ?>
