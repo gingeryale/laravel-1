@@ -18,14 +18,14 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 Route::get('/', function () {
     $posts = collect(File::files(resource_path("posts")))
-    ->map(function($file){
-        return YamlFrontMatter::parseFile($file);
-    })
-    ->map(function($doc){
-        return new Post(
-            $doc->title,$doc->excerpt,$doc->date,$doc->body(), $doc->slug
-        );
-    });
+    ->map(fn($file) => YamlFrontMatter::parseFile($file))
+    ->map(fn($doc) => new Post(
+        $doc->title,
+        $doc->excerpt,
+        $doc->date,
+        $doc->body(),
+        $doc->slug
+        ));
     
        
     // });
