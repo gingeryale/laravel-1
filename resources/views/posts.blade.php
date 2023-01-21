@@ -29,6 +29,7 @@
        <a href="/posts/<?= $post->slug;?>">
         <h1><?= $post->title; ?></h1></a>
         <div>
+        <span><?= $post->date;?></span>
         <?= $post->body; ?>
         </div>
        </article>

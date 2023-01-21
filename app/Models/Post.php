@@ -19,31 +19,36 @@ class Post
         $this->body=$body;
         $this->slug=$slug;
     }
+
     public static function all()
     {
         // $files = File::files(resource_path("posts/"));
         // return array_map(function ($file) {
         //     return $file->getcontents();
         // }, $files);
-       return collect(File::files(resource_path("posts")))
-    ->map(fn($file) => YamlFrontMatter::parseFile($file))
-    ->map(fn($doc) => new Post(
-        $doc->title,
-        $doc->excerpt,
-        $doc->date,
-        $doc->body(),
-        $doc->slug
-        ));
+        return cache()->rememberForever('posts.all', function(){
+            return collect(File::files(resource_path("posts")))
+            ->map(fn($file) => YamlFrontMatter::parseFile($file))
+            ->map(fn($doc) => new Post(
+                $doc->title,
+                $doc->excerpt,
+                $doc->date,
+                $doc->body(),
+                $doc->slug
+                ))->sortByDesc('date');
+        });
+      
     }
 
 
     public static function find($slug)
     {
-        if (!file_exists($path = resource_path("posts/{$slug}.html"))) {
-            //dd('404 error');
-            // abort(404);
-            throw new ModelNotFoundException();
-        }
-        return cache()->remember("posts.{$slug}", 1, fn () => file_get_contents($path));
+        return static::all()->firstWhere('slug', $slug);
+    //     if (!file_exists($path = resource_path("posts/{$slug}.html"))) {
+    //         //dd('404 error');
+    //         // abort(404);
+    //         throw new ModelNotFoundException();
+    //     }
+    //     return cache()->remember("posts.{$slug}", 1, fn () => file_get_contents($path));
     }
 }
