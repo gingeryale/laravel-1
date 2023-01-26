@@ -23,17 +23,17 @@
 
        <h1>Initial Text Regonition</h1>
 
-       <?php foreach($posts as $post):?>
+       @foreach($posts as $post)
 
        <article>
-       <a href="/posts/<?= $post->slug;?>">
-        <h1><?= $post->title; ?></h1></a>
+       <a href="/posts/{{ $post->slug }}">
+        <h1>{{ $post->title }}</h1></a>
         <div>
-        <span><?= $post->date;?></span>
-        <?= $post->body; ?>
+        <span>{{ $post->date}}</span>
+        {!! $post->body !!}
         </div>
        </article>
-       <?php endforeach;?>
+       @endforeach
 
     </body>
 </html>
