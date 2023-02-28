@@ -1,9 +1,15 @@
 <body>
 <article>
-<span><?= $post->date;?></span>
-<h1><?= $post->title; ?></h1>
+{{-- <span><?= $post->published_at;?></span> --}}
+<span>{{ $post->published_at }}</span>
+{{-- <h1><?= $post->title; ?></h1> --}}
+<h1>{!! $post->title !!}</h1>
 <div>
-    <?= $post->body; ?>
+    <p>
+        <?= $post->body; ?>
+        <br />
+        {{ $post->body }}
+    </p>
 </div>
 
 </article>

@@ -26,7 +26,7 @@
        @foreach($posts as $post)
 
        <article>
-       <a href="/posts/{{ $post->slug }}">
+       <a href="/posts/{{ $post->id }}">
         <h1>{{ $post->title }}</h1></a>
         <div>
         <span>{{ $post->date}}</span>

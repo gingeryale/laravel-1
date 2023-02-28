@@ -27,8 +27,8 @@ Route::get('/', function () {
     //     $doc->body(),
     //     $doc->slug
     //     ));
-    
-       
+
+
     // });
 
     // $posts = array_map(function($file){
@@ -37,15 +37,22 @@ Route::get('/', function () {
     //         $doc->title,$doc->excerpt,$doc->date,$doc->body(), $doc->slug
     //     );
     // }, $files);
-    
+
     //dd($posts);
     return view('posts', [
         'posts' => $posts
     ]);
 });
 
-Route::get('posts/{post}', function ($slug) {
+// Route::get('posts/{post}', function ($id) {
+//     return view('post', [
+//         'post' => Post::find($id)
+//     ]);
+// })->where('post', '[A-z0-9_\-]+');
+
+// Route model binding - match var name with wildcard name
+Route::get('posts/{post}', function (Post $post) {
     return view('post', [
-        'post' => Post::find($slug)
+        'post' => $post
     ]);
-})->where('post', '[A-z0-9_\-]+');
+});
