@@ -23,45 +23,47 @@ class DatabaseSeeder extends Seeder
         Category::truncate();
         Post::truncate();
 
-        $user = User::factory()->create();
+        Post::factory(5)->create();
 
-        $personal = Category::create([
-            'name' => 'Personal',
-            'slug' => 'personal'
-        ]);
-        $family = Category::create([
-            'name' => 'Family',
-            'slug' => 'family'
-        ]);
-        $work = Category::create([
-            'name' => 'Work',
-            'slug' => 'work'
-        ]);
+        //$user = User::factory()->create();
 
-        Post::create([
-            'user_id' => $user->id,
-            'category_id' => $family->id,
-            'title' => 'My Family Post',
-            'slug' => 'my-first-post',
-            'excerpt' => 'Lorem Ipsum volor something',
-            'body' => 'lorem body'
-        ]);
-        Post::create([
-            'user_id' => $user->id,
-            'category_id' => $work->id,
-            'title' => 'My Personal Post',
-            'slug' => 'my-third-post',
-            'excerpt' => 'Lorem Ipsum volor something second',
-            'body' => 'lorem body second'
-        ]);
-        Post::create([
-            'user_id' => $user->id,
-            'category_id' => $personal->id,
-            'title' => 'My Work Post',
-            'slug' => 'my-second-post',
-            'excerpt' => 'Lorem Ipsum volor something second',
-            'body' => 'lorem body second'
-        ]);
+        // $personal = Category::create([
+        //     'name' => 'Personal',
+        //     'slug' => 'personal'
+        // ]);
+        // $family = Category::create([
+        //     'name' => 'Family',
+        //     'slug' => 'family'
+        // ]);
+        // $work = Category::create([
+        //     'name' => 'Work',
+        //     'slug' => 'work'
+        // ]);
+
+        // Post::create([
+        //     'user_id' => $user->id,
+        //     'category_id' => $family->id,
+        //     'title' => 'My Family Post',
+        //     'slug' => 'my-first-post',
+        //     'excerpt' => 'Lorem Ipsum volor something',
+        //     'body' => 'lorem body'
+        // ]);
+        // Post::create([
+        //     'user_id' => $user->id,
+        //     'category_id' => $work->id,
+        //     'title' => 'My Personal Post',
+        //     'slug' => 'my-third-post',
+        //     'excerpt' => 'Lorem Ipsum volor something second',
+        //     'body' => 'lorem body second'
+        // ]);
+        // Post::create([
+        //     'user_id' => $user->id,
+        //     'category_id' => $personal->id,
+        //     'title' => 'My Work Post',
+        //     'slug' => 'my-second-post',
+        //     'excerpt' => 'Lorem Ipsum volor something second',
+        //     'body' => 'lorem body second'
+        // ]);
 
 
 

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" style="background:#b00303;">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Laravel</title>
-        <link href="app.css" rel="stylesheet">
+        <link href="/css/app.css" rel="stylesheet">
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,6 +14,7 @@
         <!-- Styles -->
 
         <style>
+
             body {
                 font-family: 'Sofia Sans', sans-serif;
             }
