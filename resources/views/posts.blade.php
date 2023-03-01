@@ -26,11 +26,13 @@
        @foreach($posts as $post)
 
        <article>
-       <a href="/posts/{{ $post->id }}">
+       <a href="/posts/{{ $post->slug }}">
         <h1>{{ $post->title }}</h1></a>
+        <p><a href="/categories/{{ $post->category->slug }}">{{ $post->category->name }}</a></p>
         <div>
-        <span>{{ $post->date}}</span>
-        {!! $post->body !!}
+        <span>{{ $post->published_at}}</span>
+        <br />
+        {!! $post->excerpt !!}
         </div>
        </article>
        @endforeach

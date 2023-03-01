@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 //use League\CommonMark\Extension\FrontMatter\Data\LibYamlFrontMatterParser;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
@@ -17,42 +18,28 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 */
 
 Route::get('/', function () {
-    $posts = Post::all();
-    // $posts = collect(File::files(resource_path("posts")))
-    // ->map(fn($file) => YamlFrontMatter::parseFile($file))
-    // ->map(fn($doc) => new Post(
-    //     $doc->title,
-    //     $doc->excerpt,
-    //     $doc->date,
-    //     $doc->body(),
-    //     $doc->slug
-    //     ));
-
-
-    // });
-
-    // $posts = array_map(function($file){
-    //     $doc = YamlFrontMatter::parseFile($file);
-    //     return new Post(
-    //         $doc->title,$doc->excerpt,$doc->date,$doc->body(), $doc->slug
-    //     );
-    // }, $files);
-
-    //dd($posts);
+    $posts = Post::with('category')->get();
     return view('posts', [
         'posts' => $posts
     ]);
 });
 
-// Route::get('posts/{post}', function ($id) {
-//     return view('post', [
-//         'post' => Post::find($id)
-//     ]);
-// })->where('post', '[A-z0-9_\-]+');
-
 // Route model binding - match var name with wildcard name
-Route::get('posts/{post}', function (Post $post) {
+Route::get('posts/{post:slug}', function (Post $post) {
     return view('post', [
         'post' => $post
+    ]);
+});
+
+
+Route::get('categories/{category:slug}', function (Category $category) {
+    return view('posts', [
+        'posts' => $category->posts
+    ]);
+});
+
+Route::get('users/{post:user_id}', function (Category $category) {
+    return view('posts', [
+        'posts' => $user->id
     ]);
 });
