@@ -30,6 +30,7 @@
        <a href="/posts/{{ $post->slug }}">
         <h1>{{ $post->title }}</h1></a>
         <p><a href="/categories/{{ $post->category->slug }}">{{ $post->category->name }}</a></p>
+        By <a href="/authors/{{$post->author->username}}">{{$post->author->name}}</a>
         <div>
         <span>{{ $post->published_at}}</span>
         <br />

@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Post;
+use App\Models\User;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 //use League\CommonMark\Extension\FrontMatter\Data\LibYamlFrontMatterParser;
@@ -18,7 +19,8 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 */
 
 Route::get('/', function () {
-    $posts = Post::with('category')->get();
+    $posts = Post::latest()->with('category', 'author')->get();
+    //dd($posts);
     return view('posts', [
         'posts' => $posts
     ]);
@@ -34,12 +36,13 @@ Route::get('posts/{post:slug}', function (Post $post) {
 
 Route::get('categories/{category:slug}', function (Category $category) {
     return view('posts', [
-        'posts' => $category->posts
+        'posts' => $category->posts->load(['category', 'author'])
     ]);
 });
 
-Route::get('users/{post:user_id}', function (Category $category) {
+Route::get('authors/{author:username}', function (User $author) {
+    //dd($author);
     return view('posts', [
-        'posts' => $user->id
+        'posts' => $author->posts->load(['category', 'author'])
     ]);
 });
