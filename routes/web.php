@@ -26,9 +26,9 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/', function () {
-    return view('components/layout');
-});
+// Route::get('/', function () {
+//     return view('components/layout');
+// });
 
 // Route model binding - match var name with wildcard name
 Route::get('posts/{post:slug}', function (Post $post) {
