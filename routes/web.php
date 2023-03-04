@@ -20,9 +20,11 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 Route::get('/', function () {
     $posts = Post::latest()->with('category', 'author')->get();
+    $categories = Category::all();
     //dd($posts);
     return view('posts', [
-        'posts' => $posts
+        'posts' => $posts,
+        'categories' => $categories
     ]);
 });
 
@@ -33,20 +35,23 @@ Route::get('/', function () {
 // Route model binding - match var name with wildcard name
 Route::get('posts/{post:slug}', function (Post $post) {
     return view('post', [
-        'post' => $post
+        'post' => $post,
     ]);
 });
 
 
 Route::get('categories/{category:slug}', function (Category $category) {
     return view('posts', [
-        'posts' => $category->posts->load(['category', 'author'])
+        'posts' => $category->posts->load(['category', 'author']),
+        'currentCategory'=>$category,
+        'categories' => Category::all()
     ]);
 });
 
 Route::get('authors/{author:username}', function (User $author) {
     //dd($author);
     return view('posts', [
-        'posts' => $author->posts->load(['category', 'author'])
+        'posts' => $author->posts->load(['category', 'author']),
+        'categories' => Category::all()
     ]);
 });
