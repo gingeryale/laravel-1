@@ -7,7 +7,7 @@
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 
-<body style="font-family: Open Sans, sans-serif; background:rgba(120,120,120,0.9)" class="">
+<body style="font-family: Open Sans, sans-serif; background:rgba(5, 53, 1, 0.9)" class="">
     <section class="px-6 py-8 bg-slate-400">
         <nav class="md:flex md:justify-between md:items-center">
             <div>
@@ -26,7 +26,7 @@
         </nav>
 
         {{ $slot }}
-       
+
         <footer class="bg-gray-100 border border-black border-opacity-5 rounded-xl text-center py-16 px-10 mt-16">
             <img src="/images/lary-newsletter-icon.svg" alt="" class="mx-auto -mb-6" style="width: 145px;">
             <h5 class="text-3xl">Stay in touch with the latest posts</h5>
