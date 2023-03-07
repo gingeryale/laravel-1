@@ -9,6 +9,13 @@ class Post extends Model
 {
     use HasFactory;
 
+    public function scopeFilter($query, array $filters)
+    {
+        if ($filters['search'] ?? false) {
+            $query->where('title', 'like', '%' . request('search') . '%')->orWhere('body', 'like', '%' . request('search') . '%');
+        }
+    }
+
 
     public function category()
     {
