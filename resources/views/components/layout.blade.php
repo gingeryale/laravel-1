@@ -7,7 +7,7 @@
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 
-<body style="font-family: Open Sans, sans-serif; background:rgba(5, 53, 1, 0.9)" class="">
+<body style="font-family: Open Sans, sans-serif; background:rgba(5, 53, 128, 0.9)" class="">
     <section class="px-6 py-8 bg-slate-400">
         <nav class="md:flex md:justify-between md:items-center">
             <div>
